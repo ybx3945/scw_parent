@@ -1,0 +1,28 @@
+server:
+  port: 10000
+
+spring:
+  application:
+    name: SCW-WEBUI
+
+  thymeleaf:
+    cache: false
+
+  session:
+    timeout: 3600
+    store-type: redis
+
+  redis:
+    host: 192.168.188.129
+    port: 6379
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    com:
+      yb: debug

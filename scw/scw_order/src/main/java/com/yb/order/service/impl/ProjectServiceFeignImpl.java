@@ -18,7 +18,7 @@ public class ProjectServiceFeignImpl implements ProjectServiceFeign {
     }
 
     @Override
-    public TReturn findReturnById(Integer returnId) {
-        return new TReturn();
+    public AppResponse<TReturn> findReturnById(Integer returnId) {
+        return AppResponse.fail(new TReturn());
     }
 }

@@ -13,10 +13,7 @@ import jdk.management.resource.internal.ApproverGroup;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -78,7 +75,8 @@ public class UserLoginController {
 
     @ApiOperation(value = "用户登录")
     @PostMapping("/login")
-    public AppResponse<UserRespVo> login(String loginacct, String password) {
+    public AppResponse<UserRespVo> login(@RequestParam("loginacct") String loginacct,
+                                         @RequestParam("password") String password) {
         // 使用service完成登录
         TMember member = userService.login(loginacct, password);
         if (member == null) {
@@ -109,7 +107,7 @@ public class UserLoginController {
 
     @ApiOperation(value = "获取当前登录的用户收货地址")
     @GetMapping("/findAddressList")
-    public AppResponse<List<TMemberAddress>> findAddressList(String accessToken) {
+    public AppResponse<List<TMemberAddress>> findAddressList(@RequestParam String accessToken) {
         // 根据用户令牌获取用户ID
         String memberId = redisTemplate.opsForValue().get(accessToken);
         if (memberId == null || memberId.length() == 0) {

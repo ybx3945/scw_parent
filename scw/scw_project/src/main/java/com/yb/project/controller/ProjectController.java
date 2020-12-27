@@ -98,7 +98,7 @@ public class ProjectController {
         }
         // 添加回报
         List<TReturn> returns = projectService.findTReturnByProjectId(projectId);
-        detailVo.setProjectReturn(returns);
+        detailVo.setProjectReturns(returns);
         return AppResponse.ok(detailVo);
     }
 
@@ -118,8 +118,9 @@ public class ProjectController {
 
     @ApiOperation(value = "根据回报ID获取回报信息")
     @GetMapping("/findReturnById/{returnId}")
-    public TReturn findReturnById(@PathVariable("returnId") Integer returnId) {
-        return projectService.findReturnInfo(returnId);
+    public AppResponse<TReturn> findReturnById(@PathVariable("returnId") Integer returnId) {
+        TReturn returnInfo = projectService.findReturnInfo(returnId);
+        return AppResponse.ok(returnInfo);
     }
 
     @GetMapping("/details/returns/{projectId}")

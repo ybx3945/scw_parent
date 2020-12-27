@@ -1,6 +1,5 @@
-package com.yb.project.vo.resp;
+package com.yb.webui.vo.resp;
 
-import com.yb.project.pojo.TReturn;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -39,5 +38,5 @@ public class ProjectDetailVo implements Serializable {
 
     private List<String> detailsImage; // 详情图片
 
-    private List<TReturn> projectReturns; // 项目回报
+    private List<ProjectReturnVo> projectReturns; // 项目回报
 }

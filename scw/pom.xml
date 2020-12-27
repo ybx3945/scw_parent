@@ -6,6 +6,7 @@
         <module>scw_user</module>
         <module>scw_project</module>
         <module>scw_order</module>
+        <module>scw_webui</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

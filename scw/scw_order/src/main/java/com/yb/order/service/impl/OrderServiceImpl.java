@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    @Autowired
+    @Resource
     private ProjectServiceFeign projectService;
 
     @Override
@@ -53,7 +54,8 @@ public class OrderServiceImpl implements OrderService {
             }
         }*/
         // 直接通过returnId获取数据，这种方法没有验证当前的returnId是否属于projectId对应的回报
-        TReturn tReturn = projectService.findReturnById(infoVo.getReturnid());
+        AppResponse<TReturn> responseRetrun = projectService.findReturnById(infoVo.getReturnid());
+        TReturn tReturn = responseRetrun.getData();
         Integer money = order.getRtncount() * tReturn.getSupportmoney() + tReturn.getFreight();
         order.setMoney(money);
         return order;

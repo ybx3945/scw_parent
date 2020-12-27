@@ -16,5 +16,5 @@ public interface ProjectServiceFeign {
     AppResponse<List<TReturn>> getReturnListByPid(@PathVariable("projectId") Integer projectId);
 
     @GetMapping("/project/findReturnById/{returnId}")
-    public TReturn findReturnById(@PathVariable("returnId") Integer returnId);
+    AppResponse<TReturn> findReturnById(@PathVariable("returnId") Integer returnId);
 }

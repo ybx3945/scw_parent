@@ -1,6 +1,5 @@
 package com.yb.order.controller;
 
-import com.yb.common.enums.OrderStatusEnumes;
 import com.yb.common.response.AppResponse;
 import com.yb.order.pojo.TOrder;
 import com.yb.order.service.OrderService;
@@ -10,7 +9,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import sun.applet.AppletResourceLoader;
 
 @RestController("/order")
 public class OrderController {
